@@ -40,6 +40,13 @@ export default class News extends Component {
     }
   }
 
+  async componentDidMount(){
+    let url = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=6907a3ac9fb04b01a8d6247397ce316d"
+    let data = await fetch(url);
+    let parsedData = await data.json()
+    this.setState({articles: parsedData.articles})
+  }
+
   render() {
     return (
       <div>
@@ -50,9 +57,9 @@ export default class News extends Component {
             {this.state.articles.map((element)=> {
               return <div key={element.url} className="col-md-4">
                         <NewsItem
-                          title={element.title.slice(0, 45)} 
-                          description={element.description.slice(0, 88)} 
-                          imageUrl={element.urlToImage} 
+                          title={element.title} 
+                          description={element.description} 
+                          imageUrl={element.urlToImage?element.urlToImage:"https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/11/Tim-Cook-retirement-leak-is-clearly-deliberate-to-test-market-reaction.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1"} 
                           newsUrl={element.url} />
                       </div>
               })}
