@@ -84,7 +84,10 @@ export default class News extends Component {
                           title={element.title} 
                           description={element.description} 
                           imageUrl={element.urlToImage?element.urlToImage:"https://i0.wp.com/9to5mac.com/wp-content/uploads/sites/6/2025/11/Tim-Cook-retirement-leak-is-clearly-deliberate-to-test-market-reaction.jpg?resize=1200%2C628&quality=82&strip=all&ssl=1"} 
-                          newsUrl={element.url} />
+                          newsUrl={element.url}
+                          author={element.author}
+                          date={element.publishedAt}
+                          source={element.source.name} />
                       </div>
               })}
           </div>
